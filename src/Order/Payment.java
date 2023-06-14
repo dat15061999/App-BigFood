@@ -1,4 +1,4 @@
-package Order;
+package src.Order;
 
 public class Payment {
 }

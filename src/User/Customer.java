@@ -1,4 +1,4 @@
-package User;
+package src.User;
 
 public class Customer extends User {
     private String role;

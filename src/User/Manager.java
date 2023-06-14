@@ -1,4 +1,4 @@
-package User;
+package src.User;
 
 public class Manager extends User{
     private String role;
