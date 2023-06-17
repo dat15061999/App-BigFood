@@ -14,14 +14,21 @@ public class UserService {
         return userlist;
     }
 
-    public void setUserlist(List<User> userlist) {
-        this.userlist = userlist;
+    public void addUserlist(User user) {
+        userlist.add(user);
     }
+    public void remoteUserList(int id) {
+        for (User item: userlist ) {
+            if(item.getId() == id) {
+                userlist.remove(item);
+                break;
+            }
+        }
+    }
+
 
     @Override
     public String toString() {
-        return "UserService{" +
-                "userlist=" + userlist +
-                '}';
+        return "{" + userlist +'}';
     }
 }
