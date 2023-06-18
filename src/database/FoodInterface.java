@@ -8,8 +8,9 @@ public interface FoodInterface<T extends Food> {
     void update(T food);
 
     void create(T food);
-    void delete();
+    void  delete();
     void edit();
+    void find();
 
     <T> List<Food> findAll();
 

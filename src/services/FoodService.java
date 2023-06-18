@@ -4,6 +4,7 @@ import src.database.FoodInterface;
 import src.models.Food;
 import src.until.GetValue;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -65,21 +66,59 @@ public class FoodService implements FoodInterface {
                 return;
             }
         }
-            System.err.println("Can't find the id of the food you want to delete");
+        System.err.println("Can't find the id of the food you want to delete");
     }
+
+    ;
 
     @Override
     public void edit() {
         int idEdit = Integer.parseInt((GetValue.getString("Nhap id muon edit")));
-        for (Food food: foods) {
-            if(idEdit == food.getId()) {
+        for (Food food : foods) {
+            if (idEdit == food.getId()) {
                 food.setName(GetValue.getString("Nhap ten moi"));
                 food.setDescription(GetValue.getString("Nhap mieu ta"));
                 food.setPrice(Integer.parseInt(GetValue.getString("Nhap gia moi")));
                 return;
             }
         }
-        System.err.println("Can't find the id of the food you want to delete");
+        System.err.println("Can't find the id of the food you want to edit.");
+    }
+
+    @Override
+    public void find() {
+        int choice = -1;
+        System.out.println("1. Find food with id or price");
+        System.out.println("2. Find food with name");
+        System.out.println("0. Exit to find.");
+        choice = Integer.parseInt(GetValue.getString("Enter your choice:"));
+        switch (choice) {
+            case 1:
+                int findIdPrice = Integer.parseInt(GetValue.getString("Nhap Id hoac gia cua san pham can tim"));
+                int count = 0;
+
+                for (Food food : foods) {
+                    if (findIdPrice == food.getId() || findIdPrice == (int) food.getPrice()) {
+                        System.out.printf("| %-3s | %-20s | %-30s | $%-6.2f |\n",
+                                food.getId(), food.getName(), food.getDescription(), food.getPrice());
+                        count++;
+                    }
+                }
+                if ( count == 0) System.err.println("Can't find the id or price of the food you want to find.");
+                break;
+            case 2:
+                String findName = GetValue.getString("Nhap Name cua san pham can tim");
+                for (Food food : foods) {
+                    if (findName.equals(food.getName())) {
+                        System.out.printf("| %-3s | %-20s | %-30s | $%-6.2f |\n",
+                                food.getId(), food.getName(), food.getDescription(), food.getPrice());
+                        return;
+                    }
+                }
+                System.err.println("Can't find the name of the food you want to find.");
+                break;
+        }
+
     }
 }
 

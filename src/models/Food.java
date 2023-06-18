@@ -3,6 +3,7 @@ package src.models;
 
 
 public class Food  {
+    private static boolean headerAdded = false;
     private int id;
     private String name;
     private String description;
@@ -63,7 +64,15 @@ public class Food  {
 
     @Override
     public String toString() {
-        return String.format("Food{id=%d, name='%s', description='%s'" +
-                ", price=%.2f}", id, name, description, price);
+        String divider = "---------------------------------------------------------------";
+        String info = String.format("| %-3s | %-20s | %-30s |   $%-6.2f  |", id, name, description, price);
+        if (!headerAdded) {
+            String header = String.format("| %-3s | %-20s | %-30s |   %-7s   |\n%s",
+                    "ID", "Name", "Description", "Price", divider);
+            headerAdded = true;
+            return String.format("%s\n%s\n%s", divider, header, info);
+        }
+        return String.format("%s\n%s", divider, info);
     }
 }
+
