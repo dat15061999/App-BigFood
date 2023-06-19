@@ -36,7 +36,6 @@ public class FoodService implements FoodInterface {
     @Override
     public void create(Food food) {
         food.setId(++idCurrent);
-        System.out.println("Adding food: " + food.toString());
         foods.add(food);
     }
 

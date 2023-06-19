@@ -63,7 +63,8 @@ public class FoodView extends FoodService {
     }
 
     private static void addFood() {
-        foodService.create(new Food(GetValue.getString("Nhap ten"), GetValue.getString("nhap chi tiet"), Integer.parseInt(GetValue.getString("nhap gia"))));
+        foodService.create(new Food(GetValue.getString("Nhap ten"), GetValue.getString("Nhap chi tiet"), Integer.parseInt(GetValue.getString("Nhap gia"))));
+        System.out.println();
         printFood();
     }
 
