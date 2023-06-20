@@ -1,6 +1,8 @@
-package src.users;
+package src.models;
 
-public class Clients extends User{
+import src.users.User;
+
+public class Clients extends User {
     private String role;
 
     public Clients(int id, String name, String userName, String passWord, int phone, int cccd, String address, int bod, String role) {

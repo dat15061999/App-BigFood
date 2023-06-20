@@ -1,19 +1,17 @@
 package src.services;
 
-import src.database.FoodInterface;
+import src.models.Dish;
+import src.until.FoodInterface;
 import src.models.Food;
 import src.until.GetValue;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static src.until.GetValue.getString;
 
-
-public class FoodService implements FoodInterface {
-    private static List<Food> foods;
+public class FoodService implements FoodInterface<Food> {
+    public static List<Food> foods;
     private static int idCurrent;
 
 
@@ -22,13 +20,13 @@ public class FoodService implements FoodInterface {
 
     static {
         foods = new ArrayList<>();
-        foods.add(new Food(++idCurrent, "Banh mi", "Lam tu bot my", 5000));
-        foods.add(new Food(++idCurrent, "Pho ga", "Lam tu bot gao", 25000));
-        foods.add(new Food(++idCurrent, "Pho bo", "Lam tu bot gao", 25000));
-        foods.add(new Food(++idCurrent, "Pho gio", "Lam tu bot gao", 25000));
-        foods.add(new Food(++idCurrent, "Bun bo", "Lam tu bot gao", 20000));
-        foods.add(new Food(++idCurrent, "Bun ga", "Lam tu bot gao", 20000));
-        foods.add(new Food(++idCurrent, "Bun gio", "Lam tu bot gao", 20000));
+        foods.add(new Food( "Banh mi", "Lam tu bot my","Con hang", 5000));
+        foods.add(new Food( "Pho ga", "Lam tu bot gao","Con hang", 25000));
+        foods.add(new Food( "Pho bo", "Lam tu bot gao","Con hang", 25000));
+        foods.add(new Food( "Pho gio", "Lam tu bot gao","Con hang", 25000));
+        foods.add(new Food( "Bun bo", "Lam tu bot gao","Con hang", 20000));
+        foods.add(new Food( "Bun ga", "Lam tu bot gao","Con hang", 20000));
+        foods.add(new Food( "Bun gio", "Lam tu bot gao","Con hang", 20000));
     }
 
     ;
@@ -39,14 +37,7 @@ public class FoodService implements FoodInterface {
         foods.add(food);
     }
 
-    public static int getIdCurrent() {
-        return idCurrent;
-    }
 
-    @Override
-    public void update(Food food) {
-
-    }
 
     @Override
     public List<Food> findAll() {
@@ -77,6 +68,7 @@ public class FoodService implements FoodInterface {
             if (idEdit == food.getId()) {
                 food.setName(GetValue.getString("Nhap ten moi"));
                 food.setDescription(GetValue.getString("Nhap mieu ta"));
+                food.setStatus(GetValue.getString("Nhap trang thai"));
                 food.setPrice(Integer.parseInt(GetValue.getString("Nhap gia moi")));
                 return;
             }
@@ -98,8 +90,8 @@ public class FoodService implements FoodInterface {
 
                 for (Food food : foods) {
                     if (findIdPrice == food.getId() || findIdPrice == (int) food.getPrice()) {
-                        System.out.printf("| %-3s | %-20s | %-30s | $%-6.2f |\n",
-                                food.getId(), food.getName(), food.getDescription(), food.getPrice());
+                        System.out.printf("| %-3s | %-20s | %-30s | %-20s | $%-6.2f |\n",
+                                food.getId(), food.getName(), food.getDescription(),food.getStatus(), food.getPrice());
                         count++;
                     }
                 }
@@ -109,8 +101,8 @@ public class FoodService implements FoodInterface {
                 String findName = GetValue.getString("Nhap Name cua san pham can tim");
                 for (Food food : foods) {
                     if (findName.equals(food.getName())) {
-                        System.out.printf("| %-3s | %-20s | %-30s | $%-6.2f |\n",
-                                food.getId(), food.getName(), food.getDescription(), food.getPrice());
+                        System.out.printf("| %-3s | %-20s | %-30s | %-20s | $%-6.2f |\n",
+                                food.getId(), food.getName(), food.getDescription(),food.getStatus(), food.getPrice());
                         return;
                     }
                 }

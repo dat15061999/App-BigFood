@@ -5,17 +5,14 @@ import src.services.FoodService;
 import src.until.GetValue;
 
 import java.util.List;
-import java.util.Scanner;
 
-import static src.until.GetValue.getString;
 
 public class FoodView extends FoodService {
-    static Scanner scanner = new Scanner(System.in);
     static FoodService foodService = new FoodService();
     static int choice = -1;
     static int count = -1;
 
-    public static void main(String[] args) {
+    public static void foodView() {
         do {
             switch (printMenu()) {
                 case 1:
@@ -39,24 +36,26 @@ public class FoodView extends FoodService {
     }
 
     private static int printMenu() {
-        System.out.println("               ===================================");
-        System.out.println("               |            Admin Page           |");
-        System.out.println("               ===================================");
-        System.out.println("               | Options:                        |");
-        System.out.println("               |        1. Print food in Screen  |");
-        System.out.println("               |        2. Add food to food list |");
-        System.out.println("               |        3. Delete food in list   |");
-        System.out.println("               |        4. Edit food in list     |");
-        System.out.println("               |        5. Find food in list     |");
-        System.out.println("               |        0. Exit to program       |");
-        System.out.println("               ===================================");
+        System.out.println("               ==========================================");
+        System.out.println("               |                Food Page               |");
+        System.out.println("               ==========================================");
+        System.out.println("               | Options:                               |");
+        System.out.println("               |        1. Print food in Screen         |");
+        System.out.println("               |        2. Add food to food list        |");
+        System.out.println("               |        3. Delete food in list          |");
+        System.out.println("               |        4. Edit food in list            |");
+        System.out.println("               |        5. Find food in list            |");
+        System.out.println("               |        0. Exit to program              |");
+        System.out.println("               ==========================================");
         choice = Integer.parseInt(GetValue.getString("Enter your choice:"));
         return choice;
     }
 
 
-    private static void printFood() {
+    public static void printFood() {
         List<Food> foods = foodService.findAll();
+        System.out.println("-----------------------------------------------------------------------------------------------------");
+        System.out.println("                                               Menu                                                 |");
         for (Food food : foods) {
             System.out.println(food);
         }

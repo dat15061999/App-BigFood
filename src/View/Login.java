@@ -1,46 +1,53 @@
 package src.View;
 
-import java.sql.SQLOutput;
-import java.util.Scanner;
+import src.until.GetValue;
+
+import static src.View.AdminView.adminView;
+//import static src.View.ClientsView.clientView;
+import static src.View.StaffView.staffView;
 
 public class Login {
-    static int choice = 0;
+    static int choice = -1;
 
     public static void main(String[] args) {
         do {
-            welcome();
-            switch (choice) {
+            switch (welcome()) {
                 case 1:
-                    boolean check = false;
-                    login(check);
-                    if (check) System.out.println("Success Login Admin");
+                    login();
                     break;
-
+                case 2:
+                    register();
+                    break;
             }
         } while (choice != 0);
     }
 
     public static int welcome() {
-        System.out.println("Welcome App BigFood - FoodStore Design ");
-        System.out.println("1. Login");
-        System.out.println("2. Register");
-        System.out.println("3. Client");
-        System.out.println("0. Exit app");
-        System.out.println("Enter your choice!");
-        choice = new Scanner(System.in).nextInt();
+        System.out.println("               ============================================");
+        System.out.println("               |  Welcome App BigFood - FoodStore Design  |");
+        System.out.println("               ============================================");
+        System.out.println("               | Options:                                 |");
+        System.out.println("               |        1. Login                          |");
+        System.out.println("               |        2. Register                       |");
+        System.out.println("               |        0. Exit to app                    |");
+        System.out.println("               ============================================");
+        choice = Integer.parseInt(GetValue.getString("Enter your choice:"));
         return choice;
     }
 
-    ;
+    public static void login() {
+        String userLogin = GetValue.getString("Username is :");
+        String passLogin = GetValue.getString("Password is :");
+        if (userLogin.equals("admin") && passLogin.equals("123456"))
+            adminView();
+        else if (userLogin.equals("staff") && passLogin.equals("123456"))
+            staffView();
+        else if (userLogin.equals("user") && passLogin.equals("123456"));
+//            clientView();
+    }
 
-    public static boolean login(boolean check) {
-        System.out.println("Enter your username");
-        String username = new Scanner(System.in).nextLine();
-        System.out.println("Enter your password");
-        String password = new Scanner(System.in).nextLine();
-        if ((username == "admin" && password == "123456")) {
-            return check = true;
-        }
-        return check = false;
-    }  ;
+    public static void register() {
+        System.out.println("Updating program!");
+    }
+
 }
