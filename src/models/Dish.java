@@ -1,19 +1,22 @@
 package src.models;
 
+import static src.models.Food.headerAdded;
+
 public class Dish {
     private int id;
     private String name;
-    private String descipton;
-    private int price;
-    private int quatity;
+    private String description;
+    private double price;
+    private int quantity;
     private double totalprice;
+    private static int idcurrent=0;
 
-    public Dish(int id, String name, String descipton, int price, int quatity, double totalprice) {
-        this.id = id;
+    public Dish(String name, String descipton, double price, int quantity, double totalprice) {
+        this.id = ++idcurrent;
         this.name = name;
-        this.descipton = descipton;
+        this.description = descipton;
         this.price = price;
-        this.quatity = quatity;
+        this.quantity = quantity;
         this.totalprice = totalprice;
     }
 
@@ -36,30 +39,47 @@ public class Dish {
     }
 
     public String getDescipton() {
-        return descipton;
+        return description;
     }
 
     public void setDescipton(String descipton) {
-        this.descipton = descipton;
+        this.description = descipton;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getTotalprice() {
+        return totalprice;
+    }
+
+    public void setTotalprice(double totalprice) {
+        this.totalprice = totalprice;
     }
 
     @Override
     public String toString() {
-        return "Dish{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", descipton='" + descipton + '\'' +
-                ", Quatity=" + quatity +
-                ", price=" + price +
-                ", Totalprice=" + totalprice +
-                '}';
+        String divider = "----------------------------------------------------------------------------------------------------------";
+        String info = String.format("| %-3s | %-20s | %-30s |  $%-9.2f  | %-8d |   $%-9.2f   |", id, name, description,price, quantity, totalprice);
+        if (!headerAdded) {
+            String header = String.format("| %-3s | %-20s | %-30s |  %-11s  | %-8s |   %-10s  |\n%s",
+                    "ID", "Name", "Description", "Price", "Quantity", "Total Price", divider);
+            headerAdded = true;
+            return String.format("%s\n%s\n%s", divider, header, info);
+        }
+        return String.format("%s\n%s", divider, info);
     }
 }

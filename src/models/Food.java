@@ -3,7 +3,7 @@ package src.models;
 
 
 public class Food  {
-    private static boolean headerAdded = false;
+    static boolean headerAdded = false;
     static int idCurrent=0;
     private int id;
     private String name;
@@ -70,7 +70,7 @@ public class Food  {
         String divider = "-----------------------------------------------------------------------------------------------------";
         String info = String.format("| %-3s | %-20s | %-30s | %-20s |   $%-6.2f  |", id, name, description,status, price);
         if (!headerAdded) {
-            String header = String.format("| %-3s | %-20s | %-30s | %-20s |   %-7s   |\n%s",
+            String header = String.format("| %-3s | %-20s | %-30s | %-20s |    %-7s   |\n%s",
                     "ID", "Name", "Description","Status", "Price", divider);
             headerAdded = true;
             return String.format("%s\n%s\n%s", divider, header, info);

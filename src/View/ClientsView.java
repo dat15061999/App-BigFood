@@ -3,7 +3,6 @@ package src.View;
 import src.until.GetValue;
 
 import static src.View.FoodView.printFood;
-import static src.View.MenuView.menuView;
 
 
 public class ClientsView {
@@ -13,7 +12,7 @@ public class ClientsView {
         do {
             switch (welcomeClient()) {
                 case 1:
-                    menuView();
+//                    menuView();
                     break;
             }
         }while (choice !=0);

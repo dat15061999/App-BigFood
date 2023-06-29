@@ -55,7 +55,7 @@ public class FoodView extends FoodService {
     public static void printFood() {
         List<Food> foods = foodService.findAll();
         System.out.println("-----------------------------------------------------------------------------------------------------");
-        System.out.println("                                               Menu                                                 |");
+        System.out.println("|                                               Menu                                                |");
         for (Food food : foods) {
             System.out.println(food);
         }
