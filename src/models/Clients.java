@@ -1,7 +1,5 @@
 package src.models;
 
-import src.users.User;
-
 public class Clients extends User {
     private String role;
 

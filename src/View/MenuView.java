@@ -2,7 +2,7 @@ package src.View;
 
 import src.models.Dish;
 import src.models.Food;
-import src.services.OrderDetail;
+import src.services.MenuService;
 import src.until.GetValue;
 
 import java.util.ArrayList;
@@ -14,9 +14,9 @@ import static src.until.GetValue.choose;
 import static src.until.GetValue.getInt;
 
 public class MenuView  {
-    static OrderDetail[] newOrderDetail = new OrderDetail[10];
+    static MenuService[] newMenuDish = new MenuService[10];
     static int choice = -1;
-    public static OrderDetail orderDetail = new OrderDetail();
+    public static MenuService listDish = new MenuService();
     private static int count;
 
     public static void main(String[] args) {
@@ -24,13 +24,13 @@ public class MenuView  {
             switch (welcomeMenu()) {
                 case 1:
                     printFood();
-                    chooseFood();
+                    chooseDish();
                     break;
                 case 2:
                     printOrderDetail();
                     break;
                 case 3:
-//                  deleteFood();
+                  deleteFood();
                     break;
                 case 4:
 //                  editFood();
@@ -59,7 +59,7 @@ public class MenuView  {
         return choice;
     }
 
-    private static void chooseFood() {
+    private static void chooseDish() {
         int id = getInt("Nhap id mua hang");
         Dish newdish = new Dish();
         for (Food food : foods) {
@@ -69,7 +69,7 @@ public class MenuView  {
                 newdish.setPrice(food.getPrice());
                 newdish.setQuantity(getInt("Nhap so luong muon mua"));
                 newdish.setTotalprice((food.getPrice()) * choose);
-                orderDetail.create(newdish);
+                listDish.create(newdish);
                 System.out.println("Them mon an thanh cong");
                 return;
             }
@@ -83,22 +83,16 @@ public class MenuView  {
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.printf("| %-3s | %-20s | %-30s |  %-11s | %-8s |   %-10s  |\n",
                 "ID", "Name", "Description", "Price", "Quantity", "Total Price");
-        List<Dish> listOrderDetail = orderDetail.findAll();
-        if (newOrderDetail != null) {
+        List<Dish> listOrderDetail = listDish.findAll();
+        if (newMenuDish != null) {
             for (Dish dish : listOrderDetail) {
                 System.out.println(dish);
             }
         }
     }
-//    private static void deleteFood() {
-//        do {
-//            orderDetail.delete();
-//            System.out.println();
-//            System.out.println("1. Do you want to continue deleting?");
-//            System.out.println("0. Exit to Delete Food");
-//            count = GetValue.getInt("Enter your choice");
-//        } while (count != 0);
-//    }
+    private static void deleteFood() {
+        listDish.delete(getInt("Nhap id muon xoa"));
+    }
 
 
 }

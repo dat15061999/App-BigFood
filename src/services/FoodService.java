@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static src.until.GetValue.getInt;
+
 
 public class FoodService implements FoodInterface<Food> {
     public static List<Food> foods;
@@ -46,7 +48,7 @@ public class FoodService implements FoodInterface<Food> {
 
     @Override
     public void delete() {
-        int idDelete = Integer.parseInt((GetValue.getString("Nhap id muon xoa")));
+        int idDelete = getInt("Nhap id muon xoa");
         Iterator<Food> iterator = foods.iterator();
         while (iterator.hasNext()) {
             Food food = iterator.next();
@@ -63,7 +65,7 @@ public class FoodService implements FoodInterface<Food> {
 
     @Override
     public void edit() {
-        int idEdit = Integer.parseInt((GetValue.getString("Nhap id muon edit")));
+        int idEdit = getInt("Nhap id muon edit");
         for (Food food : foods) {
             if (idEdit == food.getId()) {
                 food.setName(GetValue.getString("Nhap ten moi"));
@@ -85,7 +87,7 @@ public class FoodService implements FoodInterface<Food> {
         choice = Integer.parseInt(GetValue.getString("Enter your choice:"));
         switch (choice) {
             case 1:
-                int findIdPrice = Integer.parseInt(GetValue.getString("Nhap Id hoac gia cua san pham can tim"));
+                int findIdPrice = getInt("Nhap Id hoac gia cua san pham can tim");
                 int count = 0;
 
                 for (Food food : foods) {

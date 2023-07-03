@@ -1,6 +1,6 @@
 package src.services;
 
-import src.users.User;
+import src.models.User;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package src.users;
+package src.models;
 
 public class Employees extends User {
     private String role;

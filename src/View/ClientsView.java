@@ -14,6 +14,9 @@ public class ClientsView {
                 case 1:
 //                    menuView();
                     break;
+                case 2:
+//                    orderDetail();
+                    break;
             }
         }while (choice !=0);
     }
