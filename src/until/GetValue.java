@@ -29,7 +29,18 @@ public class GetValue {
                 throw new NumberFormatException("Price of Food up to 10.000 from 1.000.000$ ");
             }
             return choose;
-
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+            return getInt(str);
+        }
+    }
+    public static int getQuantity(String str) {
+        try {
+            choose = Integer.parseInt(GetValue.getString(str));
+            if (choose < 1 || choose > 1000) {
+                throw new NumberFormatException("Quantity of Product up to 1 from 1.000 ");
+            }
+            return choose;
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
             return getInt(str);

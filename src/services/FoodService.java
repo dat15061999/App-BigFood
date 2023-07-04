@@ -63,7 +63,7 @@ public class FoodService implements FoodInterface<Food> {
             if (idEdit == food.getId()) {
                 food.setName(GetValue.getString("Nhap ten moi"));
                 food.setDescription(GetValue.getString("Nhap mieu ta"));
-                food.setQuantity(GetValue.getInt("Nhap so luong"));
+                food.setQuantity(GetValue.getQuantity("Nhap so luong"));
                 food.setPrice(GetValue.getPrice("Nhap gia moi"));
                 return;
             }

@@ -12,6 +12,10 @@ public class FoodView extends FoodService {
     static int choose = -1;
     static int count = -1;
 
+    public static void main(String[] args) {
+        foodView();
+    }
+
     public static void foodView() {
         do {
             switch (printMenu()) {
@@ -61,7 +65,7 @@ public class FoodView extends FoodService {
     }
 
     private static void addFood() {
-        foodService.create(new Food(GetValue.getString("Nhap ten"), GetValue.getString("Nhap chi tiet"),GetValue.getInt("Nhap so luong"), GetValue.getInt("Nhap gia")));
+        foodService.create(new Food(GetValue.getString("Nhap ten"), GetValue.getString("Nhap chi tiet"),GetValue.getQuantity("Nhap so luong"), GetValue.getInt("Nhap gia")));
         System.out.println();
         printFood();
     }
