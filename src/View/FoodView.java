@@ -9,7 +9,7 @@ import java.util.List;
 
 public class FoodView extends FoodService {
     static FoodService foodService = new FoodService();
-    static int choice = -1;
+    static int choose = -1;
     static int count = -1;
 
     public static void foodView() {
@@ -31,7 +31,7 @@ public class FoodView extends FoodService {
                     findFood();
                     break;
             }
-        } while (choice != 0);
+        } while (choose != 0);
 
     }
 
@@ -47,22 +47,21 @@ public class FoodView extends FoodService {
         System.out.println("               |        5. Find food in list            |");
         System.out.println("               |        0. Exit to program              |");
         System.out.println("               ==========================================");
-        choice = Integer.parseInt(GetValue.getString("Enter your choice:"));
-        return choice;
+        return GetValue.getInt("Enter your choice:");
     }
 
 
     public static void printFood() {
         List<Food> foods = foodService.findAll();
-        System.out.println("-----------------------------------------------------------------------------------------------------");
-        System.out.println("|                                               Menu                                                |");
+        System.out.println("----------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("|                                                          Menu                                                            |");
         for (Food food : foods) {
             System.out.println(food);
         }
     }
 
     private static void addFood() {
-        foodService.create(new Food(GetValue.getString("Nhap ten"), GetValue.getString("Nhap chi tiet"), Integer.parseInt(GetValue.getString("Nhap gia"))));
+        foodService.create(new Food(GetValue.getString("Nhap ten"), GetValue.getString("Nhap chi tiet"),GetValue.getInt("Nhap so luong"), GetValue.getInt("Nhap gia")));
         System.out.println();
         printFood();
     }
@@ -73,7 +72,7 @@ public class FoodView extends FoodService {
             System.out.println();
             System.out.println("1. Do you want to continue deleting?");
             System.out.println("0. Exit to Delete Food");
-            count = Integer.parseInt(GetValue.getString("Enter your choice"));
+            count = GetValue.getInt("Enter your choice");
         } while (count != 0);
     }
 
@@ -83,7 +82,7 @@ public class FoodView extends FoodService {
             System.out.println();
             System.out.println("1. Do you want to continue editing?");
             System.out.println("0. Exit to Edit Food");
-            count = Integer.parseInt(GetValue.getString("Enter your choice"));
+            count = GetValue.getInt("Enter your choice");
         } while (count != 0);
     }
     private static void findFood() {
@@ -92,7 +91,7 @@ public class FoodView extends FoodService {
             System.out.println();
             System.out.println("1. Do you want to continue find?");
             System.out.println("0. Exit to Find Food");
-            count = Integer.parseInt(GetValue.getString("Enter your choice"));
+            count = GetValue.getInt("Enter your choice");
         } while (count != 0);
     }
 

@@ -1,31 +1,47 @@
 package src.models;
 
 
-
-public class Food  {
+public class Food {
     static boolean headerAdded = false;
-    static int idCurrent=0;
+    public static int idCurrent = 0;
     private int id;
     private String name;
     private String description;
     private String status;
     private double price;
+    private int quantity;
 
-    public Food( String name, String description,String status , double price) {
+    public Food(String name, String description, int quantity, String status, double price) {
         this.id = ++idCurrent;
         this.name = name;
         this.description = description;
-        this.status =status;
+        this.quantity = quantity;
+        this.status = status;
         this.price = price;
     }
-    public Food( String name, String description, double price) {
+
+    public Food(String name, String description, int quantity, double price) {
+        this.id = ++idCurrent;
         this.name = name;
         this.description = description;
+        this.quantity = quantity;
         this.price = price;
     }
-    public Food () {};
+
+    public Food() {
+    }
+
+    ;
 
     public String getStatus() {
+        status = "";
+        if (getQuantity() >= 10) {
+            status = "Con hang";
+        } else if (getQuantity() > 0) {
+            status = "Sap het hang";
+        } else if (getQuantity() == 0) {
+            status = "Het hang";
+        }
         return status;
     }
 
@@ -65,13 +81,21 @@ public class Food  {
         this.price = price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
-        String divider = "-----------------------------------------------------------------------------------------------------";
-        String info = String.format("| %-3s | %-20s | %-30s | %-20s |   $%-6.2f  |", id, name, description,status, price);
+        String divider = "----------------------------------------------------------------------------------------------------------------------------";
+        String info = String.format("| %-3s | %-20s | %-30s | %-20s | %-20s |   $%-6.2f  |", id, name, description, Integer.toString(quantity), getStatus(), price);
         if (!headerAdded) {
-            String header = String.format("| %-3s | %-20s | %-30s | %-20s |    %-7s   |\n%s",
-                    "ID", "Name", "Description","Status", "Price", divider);
+            String header = String.format("| %-3s | %-20s | %-30s | %-20s | %-20s |    %-7s   |\n%s",
+                    "ID", "Name", "Description", "Quantity", "Status", "Price", divider);
             headerAdded = true;
             return String.format("%s\n%s\n%s", divider, header, info);
         }

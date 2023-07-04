@@ -6,24 +6,27 @@ import static src.View.FoodView.foodView;
 
 public class AdminView {
     static int choice = -1;
+
     public static void  adminView() {
-       do {
-           switch (welcomeAdmin()){
-               case 1:
-                   foodView();
-                   break;
-               case 2:
+      while (choice!=0){
+          choice = welcomeAdmin();
+            switch (choice){
+                case 1:
+                    foodView();
+                    break;
+                case 2:
 //                   userView();
-                   break;
-               case 3:
+                    break;
+                case 3:
 //                   oderListView();
-                   break;
-               case 4:
+                    break;
+                case 4:
 //                   staffView();
-                   break;
-           }
-       }while (choice!=0);
+                    break;
+            }
+        }
     }
+
     private static int welcomeAdmin() {
         System.out.println("               ===================================");
         System.out.println("               |            Admin Page           |");
@@ -36,7 +39,6 @@ public class AdminView {
         System.out.println("               |        5. Updating              |");
         System.out.println("               |        0. Exit to program       |");
         System.out.println("               ===================================");
-        choice = Integer.parseInt(GetValue.getString("Enter your choice:"));
-        return choice;
+        return Integer.parseInt(GetValue.getString("Enter your choice:"));
     }
 }

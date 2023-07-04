@@ -5,7 +5,6 @@ import src.models.Food;
 import src.services.MenuService;
 import src.until.GetValue;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static src.View.FoodView.printFood;
@@ -13,7 +12,7 @@ import static src.services.FoodService.foods;
 import static src.until.GetValue.choose;
 import static src.until.GetValue.getInt;
 
-public class MenuView  {
+public class MenuView {
     static MenuService[] newMenuDish = new MenuService[10];
     static int choice = -1;
     public static MenuService listDish = new MenuService();
@@ -30,7 +29,7 @@ public class MenuView  {
                     printOrderDetail();
                     break;
                 case 3:
-                  deleteFood();
+                    deleteFood();
                     break;
                 case 4:
 //                  editFood();
@@ -90,6 +89,7 @@ public class MenuView  {
             }
         }
     }
+
     private static void deleteFood() {
         listDish.delete(getInt("Nhap id muon xoa"));
     }

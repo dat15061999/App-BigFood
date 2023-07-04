@@ -1,6 +1,6 @@
 package src.View;
 
-import src.services.OrderDetail;
+import src.models.OrderDetail;
 import src.until.GetValue;
 
 

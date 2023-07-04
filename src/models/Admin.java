@@ -6,8 +6,8 @@ import src.models.User;
 public class Admin extends User {
     private String role;
 
-    public Admin(int id, String name, String userName, String passWord, int phone, int cccd, String address, int bod, String role) {
-        super(id, name, userName, passWord, phone, cccd, address, bod);
+    public Admin(int id, String name, String userName, String passWord, int phone, int cccd, String address, String email, String role) {
+        super(id, name, userName, passWord, phone, cccd, address, email);
         this.role = role;
     }
 
@@ -29,7 +29,7 @@ public class Admin extends User {
                 ", phone=" + phone +
                 ", cccd=" + cccd +
                 ", address='" + address + '\'' +
-                ", bod=" + bod +
+                ", email=" + email +
                 ",role='" + role + '\'' +
                 '}';
     }

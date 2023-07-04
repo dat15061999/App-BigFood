@@ -1,6 +1,5 @@
 package src.models;
 
-import java.util.Date;
 
 public class User {
     protected int id;
@@ -10,9 +9,9 @@ public class User {
     protected int phone;
     protected int cccd;
     protected String address;
-    protected int bod;
+    protected String email;
 
-    public User(int id, String name, String userName, String passWord, int phone, int cccd, String address, int bod) {
+    public User(int id, String name, String userName, String passWord, int phone, int cccd, String address, String email) {
         this.id = id;
         this.name = name;
         this.userName = userName;
@@ -20,7 +19,7 @@ public class User {
         this.phone = phone;
         this.cccd = cccd;
         this.address = address;
-        this.bod = bod;
+        this.email = email;
     }
 
     public int getId() {
@@ -32,6 +31,7 @@ public class User {
     }
 
     public String getName() {
+
         return name;
     }
 
@@ -79,13 +79,25 @@ public class User {
         this.address = address;
     }
 
-    public int getBod() {
-        return bod;
+    public String getEmail() {
+        return email;
     }
 
-    public void setBod(int bod) {
-        this.bod = bod;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", userName='" + userName + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", phone=" + phone +
+                ", cccd=" + cccd +
+                ", address='" + address + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

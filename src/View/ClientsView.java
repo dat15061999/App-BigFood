@@ -2,8 +2,6 @@ package src.View;
 
 import src.until.GetValue;
 
-import static src.View.FoodView.printFood;
-
 
 public class ClientsView {
     public static int choice =-1;

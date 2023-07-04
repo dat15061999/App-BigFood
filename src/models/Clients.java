@@ -3,8 +3,8 @@ package src.models;
 public class Clients extends User {
     private String role;
 
-    public Clients(int id, String name, String userName, String passWord, int phone, int cccd, String address, int bod, String role) {
-        super(id, name, userName, passWord, phone, cccd, address, bod);
+    public Clients(int id, String name, String userName, String passWord, int phone, int cccd, String address, String email, String role) {
+        super(id, name, userName, passWord, phone, cccd, address, email);
         this.role = role;
     }
 
@@ -13,6 +13,7 @@ public class Clients extends User {
     }
 
     public void setRole(String role) {
+
         this.role = role;
     }
 
@@ -26,7 +27,7 @@ public class Clients extends User {
                 ", phone=" + phone +
                 ", cccd=" + cccd +
                 ", address='" + address + '\'' +
-                ", bod=" + bod +
+                ", email=" + email +
                 ",role='" + role + '\'' +
                 '}';
     }

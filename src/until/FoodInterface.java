@@ -1,7 +1,5 @@
 package src.until;
 
-import src.models.Dish;
-import src.models.Food;
 
 import java.util.List;
 
@@ -15,6 +13,6 @@ public interface FoodInterface<T> {
     void edit();
     void find();
 
-    <T> List<T> findAll();
+    List<T> findAll();
 
 }

@@ -1,15 +1,13 @@
 package src.services;
 
 import src.models.Dish;
-import src.models.Food;
-import src.models.Order;
 import src.until.FoodInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public  class MenuService implements FoodInterface<Dish> {
-    private static List<Dish> dishList = new ArrayList<>();
+    private static final List<Dish> dishList = new ArrayList<>();
     private static int idDish = 0;
     @Override
     public void create(Dish dish) {
@@ -17,11 +15,7 @@ public  class MenuService implements FoodInterface<Dish> {
         dishList.add(dish);
     }
     public void delete(int idDish) {
-        for (Dish dish: dishList) {
-            if(dish.getId() == idDish) {
-                dishList.remove(dish);
-            }
-        }
+        dishList.removeIf(dish -> dish.getId() == idDish);
     }
 
     @Override
@@ -37,6 +31,7 @@ public  class MenuService implements FoodInterface<Dish> {
     public void find() {
 
     }
+
 
     @Override
     public List<Dish> findAll() {

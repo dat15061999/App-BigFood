@@ -1,6 +1,5 @@
 package src.services;
 
-import src.models.Dish;
 import src.until.FoodInterface;
 import src.models.Food;
 import src.until.GetValue;
@@ -9,12 +8,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static src.until.GetValue.getInt;
 
 
 public class FoodService implements FoodInterface<Food> {
     public static List<Food> foods;
-    private static int idCurrent;
 
 
     public FoodService() {
@@ -22,20 +19,18 @@ public class FoodService implements FoodInterface<Food> {
 
     static {
         foods = new ArrayList<>();
-        foods.add(new Food( "Banh mi", "Lam tu bot my","Con hang", 5000));
-        foods.add(new Food( "Pho ga", "Lam tu bot gao","Con hang", 25000));
-        foods.add(new Food( "Pho bo", "Lam tu bot gao","Con hang", 25000));
-        foods.add(new Food( "Pho gio", "Lam tu bot gao","Con hang", 25000));
-        foods.add(new Food( "Bun bo", "Lam tu bot gao","Con hang", 20000));
-        foods.add(new Food( "Bun ga", "Lam tu bot gao","Con hang", 20000));
-        foods.add(new Food( "Bun gio", "Lam tu bot gao","Con hang", 20000));
+        foods.add(new Food( "Banh mi", "Lam tu bot my",2,"Con hang", 50000));
+        foods.add(new Food( "Pho ga", "Lam tu bot gao",10,"Con hang", 25000));
+        foods.add(new Food( "Pho bo", "Lam tu bot gao",10,"Con hang", 25000));
+        foods.add(new Food( "Pho gio", "Lam tu bot gao",10,"Con hang", 25000));
+        foods.add(new Food( "Bun bo", "Lam tu bot gao",10,"Con hang", 20000));
+        foods.add(new Food( "Bun ga", "Lam tu bot gao",10,"Con hang", 20000));
+        foods.add(new Food( "Bun gio", "Lam tu bot gao",10,"Con hang", 20000));
     }
-
-    ;
 
     @Override
     public void create(Food food) {
-        food.setId(++idCurrent);
+        food.setId(food.getId());
         foods.add(food);
     }
 
@@ -48,7 +43,7 @@ public class FoodService implements FoodInterface<Food> {
 
     @Override
     public void delete() {
-        int idDelete = getInt("Nhap id muon xoa");
+        int idDelete = GetValue.getInt("Nhap id muon xoa");
         Iterator<Food> iterator = foods.iterator();
         while (iterator.hasNext()) {
             Food food = iterator.next();
@@ -61,17 +56,15 @@ public class FoodService implements FoodInterface<Food> {
         System.err.println("Can't find the id of the food you want to delete");
     }
 
-    ;
-
     @Override
     public void edit() {
-        int idEdit = getInt("Nhap id muon edit");
+        int idEdit = GetValue.getInt("Nhap id muon edit");
         for (Food food : foods) {
             if (idEdit == food.getId()) {
                 food.setName(GetValue.getString("Nhap ten moi"));
                 food.setDescription(GetValue.getString("Nhap mieu ta"));
-                food.setStatus(GetValue.getString("Nhap trang thai"));
-                food.setPrice(Integer.parseInt(GetValue.getString("Nhap gia moi")));
+                food.setQuantity(GetValue.getInt("Nhap so luong"));
+                food.setPrice(GetValue.getPrice("Nhap gia moi"));
                 return;
             }
         }
@@ -80,31 +73,33 @@ public class FoodService implements FoodInterface<Food> {
 
     @Override
     public void find() {
-        int choice = -1;
         System.out.println("1. Find food with id or price");
         System.out.println("2. Find food with name");
         System.out.println("0. Exit to find.");
-        choice = Integer.parseInt(GetValue.getString("Enter your choice:"));
-        switch (choice) {
+        switch (GetValue.getInt("Enter your choice :")) {
             case 1:
-                int findIdPrice = getInt("Nhap Id hoac gia cua san pham can tim");
+                int findIdPrice = GetValue.getInt("Nhap id hoac gia cua san pham can tim");
                 int count = 0;
 
                 for (Food food : foods) {
                     if (findIdPrice == food.getId() || findIdPrice == (int) food.getPrice()) {
-                        System.out.printf("| %-3s | %-20s | %-30s | %-20s | $%-6.2f |\n",
-                                food.getId(), food.getName(), food.getDescription(),food.getStatus(), food.getPrice());
+                        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+                        System.out.printf("| %-3s | %-20s | %-30s | %-20d | %-20s | $%-6.2f |\n",
+                                food.getId(), food.getName(), food.getDescription(),food.getQuantity(),food.getStatus(), food.getPrice());
+                        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
                         count++;
                     }
                 }
                 if ( count == 0) System.err.println("Can't find the id or price of the food you want to find.");
                 break;
             case 2:
-                String findName = GetValue.getString("Nhap Name cua san pham can tim");
+                String findName = GetValue.getString("Nhap ten cua san pham can tim");
                 for (Food food : foods) {
                     if (findName.equals(food.getName())) {
-                        System.out.printf("| %-3s | %-20s | %-30s | %-20s | $%-6.2f |\n",
-                                food.getId(), food.getName(), food.getDescription(),food.getStatus(), food.getPrice());
+                        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
+                        System.out.printf("| %-3s | %-20s | %-30s | %-20d | %-20s | $%-6.2f |\n",
+                                food.getId(), food.getName(), food.getDescription(),food.getQuantity(),food.getStatus(), food.getPrice());
+                        System.out.println("-------------------------------------------------------------------------------------------------------------------------");
                         return;
                     }
                 }

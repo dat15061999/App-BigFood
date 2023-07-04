@@ -5,9 +5,10 @@ public class Employees extends User {
     private static int salary;
     private static int dayOff;
     private static double totalSalary;
+    private static double revenueBonus;
 
-    public Employees(int id, String name, String userName, String passWord, int phone, int cccd, String address, int bod, String role, int salary, int dayOff) {
-        super(id, name, userName, passWord, phone, cccd, address, bod);
+    public Employees(int id, String name, String userName, String passWord, int phone, int cccd, String address, String email, String role, int salary, int dayOff) {
+        super(id, name, userName, passWord, phone, cccd, address, email);
         this.role = role;
         this.salary = salary;
         this.dayOff = dayOff;
@@ -54,7 +55,7 @@ public class Employees extends User {
                 ", passWord='" + passWord + '\'' +
                 ", phone=" + phone +
                 ", cccd=" + cccd +
-                ", bod=" + bod +
+                ", email=" + email +
                 ", address='" + address + '\'' +
                 ", salary=" + salary +
                 ", dayOff=" + dayOff +

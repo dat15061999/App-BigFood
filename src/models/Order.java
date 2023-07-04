@@ -1,30 +1,33 @@
 package src.models;
 
-import src.services.OrderDetail;
 
 public class Order {
-    private String client;
-    private String staff;
+    private Clients client;
+    private Employees staff;
 
     public Order() {}
 
-    public Order( String client, String staff) {
+    public Order( Clients client, Employees staff) {
         this.client = client;
         this.staff = staff;
     }
-    public String getClient() {
+    public Clients getClient() {
+
         return client;
     }
 
-    public void setClient(String client) {
+    public void setClient(Clients client) {
+
         this.client = client;
     }
 
-    public String getStaff() {
+    public Employees getStaff() {
+
         return staff;
     }
 
-    public void setStaff(String staff) {
+    public void setStaff(Employees staff) {
+
         this.staff = staff;
     }
 

@@ -42,7 +42,7 @@ public class Login {
             adminView();
         else if (userLogin.equals("staff") && passLogin.equals("123456"))
             staffView();
-        else if (userLogin.equals("user") && passLogin.equals("123456"));
+//        else if (userLogin.equals("user") && passLogin.equals("123456"));
 //            clientView();
     }
 
